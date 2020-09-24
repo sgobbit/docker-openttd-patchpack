@@ -65,7 +65,15 @@ RUN go get github.com/ropenttd/docker_openttd-bans-sidecar/pkg/banread \
 # DEPLOY ENVIRONMENT
 
 FROM debian:latest
-LABEL maintainer="Sgobbi Federico federico@sgobbi.it"
+
+ARG OPENTTD_VERSION="0.36.0"
+LABEL org.label-schema.name="OpenTTD Patchpack" \
+      org.label-schema.description="OpenTTD (with additional patches) gameplay server docker image." \
+      org.label-schema.url="https://github.com/sgobbit/docker-openttd-patchpack" \
+      org.label-schema.vcs-url="https://github.com/sgobbit/docker-openttd-patchpack" \
+      org.label-schema.vendor="Sgobbi Federico federico@sgobbi.it" \
+      org.label-schema.version=$OPENTTD_VERSION \
+      org.label-schema.schema-version="1.0"
 
 # Setup the environment and install runtime dependencies
 RUN mkdir -p /config \
