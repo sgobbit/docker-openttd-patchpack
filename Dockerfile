@@ -1,8 +1,8 @@
 # BUILD ENVIRONMENT 1
 FROM debian:latest AS ottd_build
 
-ARG OPENTTD_VERSION="jgrpp-0.36.0"
-ARG OPENGFX_VERSION="0.6.0"
+ARG OPENTTD_VERSION="jgrpp-0.38.0"
+ARG OPENGFX_VERSION="0.5.5"
 
 # Get things ready
 RUN mkdir -p /config \
@@ -66,7 +66,6 @@ RUN go get github.com/ropenttd/docker_openttd-bans-sidecar/pkg/banread \
 
 FROM debian:latest
 
-ARG OPENTTD_VERSION="0.36.0"
 LABEL org.label-schema.name="OpenTTD Patchpack" \
       org.label-schema.description="OpenTTD (with additional patches) gameplay server docker image." \
       org.label-schema.url="https://github.com/sgobbit/docker-openttd-patchpack" \
