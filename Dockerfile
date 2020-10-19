@@ -29,16 +29,11 @@ RUN git clone https://github.com/JGRennison/OpenTTD-patches . \
     && git fetch --tags \
     && git checkout ${OPENTTD_VERSION}
 
-RUN /tmp/src/configure \
-    --enable-dedicated \
-    --binary-dir=bin \
-    --data-dir=data \
-    --prefix-dir=/app \
-    --personal-dir=/ \
-    —-enable-debug
-
-RUN make -j"$(nproc)" \
-    && make install
+RUN mkdir -p build
+RUN cd build
+RUN rm CMakeCache.txt
+RUN cmake .. -DOPTION_DEDICATED=true && make -j$(nproc 2>/dev/null || echo "1")
+RUN make install
 
 # Add the latest graphics files
 ## Install OpenGFX
