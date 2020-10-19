@@ -31,7 +31,7 @@ RUN git clone https://github.com/JGRennison/OpenTTD-patches . \
 
 RUN mkdir -p build
 RUN cd build
-RUN rm CMakeCache.txt
+RUN [ ! -e CMakeCache.txt ] || rm CMakeCache.txt
 RUN cmake .. -DOPTION_DEDICATED=true && make -j$(nproc 2>/dev/null || echo "1")
 RUN make install
 
