@@ -15,6 +15,7 @@ RUN apt-get update && \
     wget \
     git \
     g++ \
+    cmake \
     make \
     patch \
     zlib1g-dev \
